@@ -2,6 +2,8 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
+fake_item_db = [{"item-name ": "Foo"}, {"item-name ": "Bar"}, {"item-name ": "Daz"}]
+
 
 #! Root Path
 @app.get("/")
@@ -20,4 +22,8 @@ async def readItem(item_id: int):
 async def readItemName(item_name: str):
     return {"Item Name ": item_name}
 
-#! Query Parameters
+
+#! Query Parameters - String    eg:-  /item?name="{str}"
+@app.get("/item")
+async def readItemEndpoint(name: str):
+    return {"Name": name}
