@@ -23,6 +23,10 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan)
 
+#! Root path
+@app.get("/")
+def root_page():
+    return {"message": "Hello Genius"}
 
 #! Create Todo list
 @app.post("/todo/", response_model=Todo)
